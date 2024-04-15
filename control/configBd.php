@@ -1,5 +1,5 @@
 <?php
-// credenciales, donde estan definidas variables globales 
+// Arreglo asociativo credenciales, donde estan definidas variables globales 
 $GLOBALS['serv']="localhost";
 $GLOBALS['usua']="root";
 $GLOBALS['pass']="";

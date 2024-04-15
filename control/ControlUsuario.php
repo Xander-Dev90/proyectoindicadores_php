@@ -27,11 +27,12 @@ class ControlUsuario{
     
     function consultar(){
         $email=$this->objUsuario->getEmail();
+        
         $objControlConexion = new ControlConexion(); //instanciamos una clase 
         $ComandoSql="SELECT * FROM usuario WHERE email='$email'";
         $objControlConexion->abrirBd('localhost','root','','bd_indicadores','3306'); 
         $recordSet=$objControlConexion->ejecutarSelect($ComandoSql);
-        if($row = mysqli_fetch_array($recordSet, MYSQL_BOTH)){
+        if($row = $recordSet->fetch_array(MYSQLI_BOTH)){
             $contrasena=$row['contrasena'];
             $this->objUsuario->setContrasena($contrasena);
         }

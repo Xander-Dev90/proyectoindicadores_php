@@ -21,13 +21,28 @@ switch ($boton) {
 
 		break;
 	case 'Consultar':
-		# code...
+		$email=$_POST['txtEmail'];
+		$contrasena=$_POST['txtContrasena'];
+		$objUsuario = new Usuario($email,$contrasena);
+		$objControlUsuario = new ControlUsuario($objUsuario);
+		$objControlUsuario->listar();
+		header('Location: vistaUsuarios.php');
 		break;
 	case 'Modificar':
-		# code...
+		$email=$_POST['txtEmail'];
+		$contrasena=$_POST['txtContrasena'];
+		$objUsuario = new Usuario($email,$contrasena);
+		$objControlUsuario = new ControlUsuario($objUsuario);
+		$objControlUsuario->modificar();
+		header('Location: vistaUsuarios.php');
 		break;
 	case 'Borrar':
-		# code...
+		$email=$_POST['txtEmail'];
+		$contrasena=$_POST['txtContrasena'];
+		$objUsuario = new Usuario($email,$contrasena);
+		$objControlUsuario = new ControlUsuario($objUsuario);
+		$objControlUsuario->borrar();
+		header('Location: vistaUsuarios.php');
 		break;
 	default:
 		# code...
@@ -349,7 +364,7 @@ switch ($boton) {
 					</tbody>
 				</table>
 				<div class="clearfix">
-					<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+					<div class="hint-text">Siguiente <b>5</b> out of <b>25</b> Anterior</div>
 					<ul class="pagination">
 						<li class="page-item disabled"><a href="#">Previous</a></li>
 						<li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -367,7 +382,7 @@ switch ($boton) {
 	<div id="crudModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form id="frmUsuarios" method="post" action="vistaUsuarios.php"> //action para decir a que pagina quiero enviarle los datos por metodo get
+				<form id="frmUsuarios" method="post" action="vistaUsuarios.php"> 
 					<div class="modal-header">						
 						<h4 class="modal-title">Gestion Usuarios</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
